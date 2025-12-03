@@ -1,7 +1,7 @@
 version: "1.0"
 
 agents:
-  intro:
+  fetch-stores:
     description: "A demo agent"
     provider: claude-code
     image: vm0-claude-code-dev

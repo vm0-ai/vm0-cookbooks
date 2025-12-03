@@ -17,20 +17,20 @@ Use this skill when the user:
 
 ## How to Use
 
-Execute the script located at `./.claude/skills/fetch-stores/scripts/fetch-stores.sh`:
+Execute the script located at `scripts/fetch-stores.sh`:
 
 ```bash
-./.claude/skills/fetch-stores/scripts/fetch-stores.sh "search query" ["optional location"]
+fetch-stores.sh "search query" ["optional location"]
 ```
 
 ### Examples
 
 ```bash
 # Search for restaurants in New York
-./.claude/skills/fetch-stores/scripts/fetch-stores.sh "best restaurants in New York"
+fetch-stores.sh "best restaurants in New York"
 
 # Search with separate location parameter
-./.claude/skills/fetch-stores/scripts/fetch-stores.sh "coffee shops" "San Francisco, CA"
+fetch-stores.sh "coffee shops" "San Francisco, CA"
 ```
 
 ## Prerequisites
@@ -43,7 +43,7 @@ export DUMPLING_AI_API_KEY=your_api_key
 
 ## Output
 
-- Results are saved to `./data/stores_[timestamp].json`
+- Results are saved to `/tmp/data/stores_[timestamp].json`
 - The script displays:
   - Number of places found
   - Top 10 rated places with ratings and addresses

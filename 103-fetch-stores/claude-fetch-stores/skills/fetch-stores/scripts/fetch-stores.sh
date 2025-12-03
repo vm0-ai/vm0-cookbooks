@@ -21,7 +21,7 @@ fi
 
 QUERY="$1"
 LOCATION="${2:-}"
-OUTPUT_DIR="./data"
+OUTPUT_DIR="/tmp/data"
 TIMESTAMP=$(date +%Y%m%d_%H%M%S)
 OUTPUT_FILE="${OUTPUT_DIR}/stores_${TIMESTAMP}.json"
 
