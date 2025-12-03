@@ -26,5 +26,7 @@ cat hello.md
 ```
 
 ## resume & continue
+```
 vm0 run resume <checkpoint> "prompt"
 vm0 run continue <session> "prompt"
+```
