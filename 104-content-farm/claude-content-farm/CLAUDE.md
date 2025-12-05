@@ -20,7 +20,9 @@ Configure RSS feeds to fetch from (add or remove as needed):
 
 ## Workflow
 
-Follow these 8 phases to generate and publish a complete blog article:
+Follow these 8 phases to generate and publish a complete blog article.
+
+**⚠️ IMPORTANT: The task is NOT complete until Phase 8 (Publish to Dev.to) is finished and you have received a successful Dev.to article URL. Do NOT stop at Phase 7.**
 
 ### Phase 1: RSS Fetching
 
@@ -81,6 +83,10 @@ Create a structured article outline:
 ## H2: Conclusion
 - Summary
 - Call to action
+
+## References
+- [1] Source citation
+- [2] Source citation
 ```
 
 Include keyword placement strategy in your outline.
@@ -95,13 +101,23 @@ Write a 1000-1500 word article following the outline:
 - Include data, examples, and citations from source articles
 - Natural keyword integration (don't over-optimize)
 - Strong conclusion with actionable takeaways
-- Professional but accessible tone
+- **Conversational and relaxed tone** - write like you're explaining to a friend over coffee, not lecturing
 
 **Writing Tips:**
 - Use short paragraphs (2-3 sentences)
 - Include bullet points for readability
 - Add internal subheadings where helpful
-- Cite sources with links
+- Use casual transitions ("So here's the thing...", "Now, this is where it gets interesting...")
+- Add occasional humor or relatable observations where appropriate
+- Avoid stiff, corporate language
+
+**Citation Requirements (Important for credibility):**
+- Every factual claim or statistic MUST include an inline citation
+- Use this format: "According to [Source Name](URL), ..."
+- At the end of the article, include a **References** section listing all sources
+- Format each reference as: `[n] Author/Publication. "Article Title." URL. Access Date.`
+- Minimum 3 citations per article
+- Prefer primary sources over aggregators when possible
 
 ### Phase 6: Featured Image Generation
 
@@ -145,9 +161,9 @@ cp /tmp/images/generated_*.png /home/user/workspace/output/featured.png
 }
 ```
 
-### Phase 8: Publish to Dev.to
+### Phase 8: Publish to Dev.to (REQUIRED - Final Step)
 
-Automatically publish the article to Dev.to.
+**This phase is MANDATORY. You must publish the article to complete the task.**
 
 Use the `devto-publish` skill:
 
@@ -188,7 +204,8 @@ Use the `devto-publish` skill:
 - Always write articles in English, regardless of user's language
 - Always start with Phase 1 (RSS fetching) unless user provides specific sources
 - Ask for clarification if the topic is too broad
-- Cite at least 2-3 sources in the article
-- Keep the tone professional but engaging
+- **Tone: Conversational and approachable** - like a knowledgeable friend sharing insights, not a formal report
+- **Citations: Rigorous and clear** - every claim backed by sources, properly formatted references section
 - Optimize for readability (short paragraphs, bullet points)
 - Ensure all output files are saved to `/home/user/workspace/output/`
+- **⚠️ MUST complete Phase 8**: Always publish to Dev.to and report the article URL back to the user. The workflow is incomplete without a published article.
