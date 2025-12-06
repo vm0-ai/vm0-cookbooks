@@ -26,29 +26,21 @@ LIMIT="${2:-5}"
 echo "Triggering TikTok scrape for keyword: $KEYWORD"
 echo "Results limit: $LIMIT"
 
-# Build request body
+# Build request body - using search_url format
 REQUEST_BODY=$(cat <<EOF
 {
   "input": [
     {
-      "search_keyword": "$KEYWORD",
-      "country": ""
+      "search_url": "https://www.tiktok.com/search?q=$KEYWORD",
+      "country": "US"
     }
-  ],
-  "custom_output_fields": [
-    "url",
-    "description",
-    "profile_id",
-    "profile_username",
-    "profile_url",
-    "profile_followers"
   ]
 }
 EOF
 )
 
 # Call Bright Data API
-response=$(curl -s -X POST "$API_URL?dataset_id=$DATASET_ID&include_errors=true&type=discover_new&discover_by=keyword&limit_per_input=$LIMIT" \
+response=$(curl -s -X POST "$API_URL?dataset_id=$DATASET_ID&include_errors=true&type=discover_new&discover_by=search_url&limit_per_input=$LIMIT" \
     -H "Content-Type: application/json" \
     -H "Authorization: Bearer $BRIGHTDATA_API_KEY" \
     -d "$REQUEST_BODY")

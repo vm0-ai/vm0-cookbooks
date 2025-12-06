@@ -68,11 +68,12 @@ if [ $? -eq 0 ]; then
         echo ""
         echo "Influencer Profiles Found:"
         echo "=========================="
+        # Use actual field names from Bright Data response
         echo "$response" | jq -r '.[]? | "
-Username: @\(.profile_username // "N/A")
-Profile URL: \(.profile_url // "N/A")
-Followers: \(.profile_followers // "N/A")
-Description: \(.description // "N/A" | .[0:100])...
+Username: @\(.author.name // .author.id // "N/A")
+Profile URL: \(.author.url // "N/A")
+Followers: \(.author.followers // "N/A")
+Bio: \(.author.bio // "N/A" | .[0:100])
 ---"' 2>/dev/null
 
     else
