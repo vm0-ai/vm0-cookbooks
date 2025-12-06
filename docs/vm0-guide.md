@@ -88,7 +88,7 @@ agents:
   my-agent:
     description: "Description of what your agent does"
     provider: claude-code
-    image: vm0-claude-code-dev
+    image: vm0-claude-code
     volumes:
       - my-volume:/home/user/.config/claude
     working_dir: /home/user/workspace
@@ -106,7 +106,7 @@ volumes:
 | `agents.<name>` | Unique identifier for your agent |
 | `description` | Human-readable description |
 | `provider` | AI provider (use `claude-code`) |
-| `image` | Container image (use `vm0-claude-code-dev`) |
+| `image` | Container image (use `vm0-claude-code`) |
 | `volumes` | Volume mappings (`<ref>:<mount-path>`) |
 | `working_dir` | Agent's working directory |
 | `volumes.<ref>.name` | Cloud volume name (**must match folder name**) |
@@ -325,7 +325,7 @@ agents:
   travel-planner:
     description: "Travel planning assistant that creates personalized itineraries"
     provider: claude-code
-    image: vm0-claude-code-dev
+    image: vm0-claude-code
     volumes:
       - travel-planner-volume:/home/user/.config/claude
     working_dir: /home/user/workspace

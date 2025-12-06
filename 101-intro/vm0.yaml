@@ -4,7 +4,7 @@ agents:
   intro:
     description: "A demo agent"
     provider: claude-code
-    image: vm0-claude-code-dev
+    image: vm0-claude-code
     volumes:
       - claude-files:/home/user/.config/claude
     working_dir: /home/user/workspace
