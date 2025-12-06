@@ -22,10 +22,35 @@ if [ -z "$DATABASE_ID" ] || [ -z "$PROFILE_ID" ]; then
     exit 1
 fi
 
-# Convert followers to number (remove commas, K, M suffixes)
-FOLLOWERS_NUM=$(echo "$FOLLOWERS" | sed 's/,//g' | sed 's/K/*1000/' | sed 's/M/*1000000/' | bc 2>/dev/null || echo "0")
+# Convert followers to number
+# Handles: 1500000, 1.5M, 150K, 1,500,000, etc.
+convert_followers() {
+    local val="$1"
+    # Remove commas and spaces
+    val=$(echo "$val" | tr -d ', ')
 
-echo "Adding influencer to Notion: $USERNAME"
+    # Handle M (millions)
+    if echo "$val" | grep -iq 'm'; then
+        val=$(echo "$val" | sed 's/[mM]//g')
+        val=$(echo "$val * 1000000" | bc 2>/dev/null || echo "0")
+    # Handle K (thousands)
+    elif echo "$val" | grep -iq 'k'; then
+        val=$(echo "$val" | sed 's/[kK]//g')
+        val=$(echo "$val * 1000" | bc 2>/dev/null || echo "0")
+    fi
+
+    # Convert to integer
+    echo "$val" | cut -d'.' -f1 | grep -o '[0-9]*' | head -1 || echo "0"
+}
+
+FOLLOWERS_NUM=$(convert_followers "$FOLLOWERS")
+# Default to 0 if empty
+FOLLOWERS_NUM="${FOLLOWERS_NUM:-0}"
+
+echo "Adding influencer to Notion: $USERNAME (Followers: $FOLLOWERS -> $FOLLOWERS_NUM)"
+
+# Escape special characters in description for JSON
+DESCRIPTION_ESCAPED=$(echo "$DESCRIPTION" | head -c 2000 | sed 's/\\/\\\\/g' | sed 's/"/\\"/g' | tr '\n' ' ')
 
 # Create page
 RESPONSE=$(curl -s -X POST "https://api.notion.com/v1/pages" \
@@ -45,7 +70,7 @@ RESPONSE=$(curl -s -X POST "https://api.notion.com/v1/pages" \
                 \"url\": \"$URL\"
             },
             \"Description\": {
-                \"rich_text\": [{\"text\": {\"content\": \"$(echo "$DESCRIPTION" | head -c 2000)\"}}]
+                \"rich_text\": [{\"text\": {\"content\": \"$DESCRIPTION_ESCAPED\"}}]
             },
             \"Followers\": {
                 \"number\": $FOLLOWERS_NUM
