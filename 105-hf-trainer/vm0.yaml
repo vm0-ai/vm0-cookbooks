@@ -1,0 +1,17 @@
+version: "1.0"
+
+agents:
+  hf-trainer:
+    description: "Fine-tune LLMs on Hugging Face cloud GPUs with natural language"
+    provider: claude-code
+    image: vm0-claude-code-dev
+    volumes:
+      - claude-files:/home/user/.config/claude
+    working_dir: /home/user/workspace
+    environment:
+      HF_TOKEN: ${{ secrets.HF_TOKEN }}
+
+volumes:
+  claude-files:
+    name: claude-hf-trainer
+    version: latest
