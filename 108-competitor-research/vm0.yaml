@@ -1,0 +1,20 @@
+version: "1.0"
+
+agents:
+  competitor-research:
+    description: "AI-powered competitor research agent that discovers competitors, analyzes company profiles, product offerings, and customer reviews, then compiles reports to Notion"
+    provider: claude-code
+    image: vm0-claude-code
+    volumes:
+      - claude-competitor-research:/home/user/.config/claude
+    working_dir: /home/user/workspace
+    environment:
+      EXA_API_KEY: ${{ secrets.EXA_API_KEY }}
+      FIRECRAWL_API_KEY: ${{ secrets.FIRECRAWL_API_KEY }}
+      SERPAPI_API_KEY: ${{ secrets.SERPAPI_API_KEY }}
+      NOTION_API_KEY: ${{ secrets.NOTION_API_KEY }}
+
+volumes:
+  claude-competitor-research:
+    name: claude-competitor-research
+    version: latest
