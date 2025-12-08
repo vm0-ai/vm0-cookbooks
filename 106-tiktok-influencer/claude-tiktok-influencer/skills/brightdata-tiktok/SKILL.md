@@ -1,18 +1,18 @@
 ---
 name: brightdata-tiktok
-description: Scrape TikTok influencer profiles using Bright Data API. Use this skill when the user wants to discover TikTok influencers by keyword.
+description: Discover TikTok influencers by keyword search using Bright Data API
 ---
 
 # Bright Data TikTok Scraper
 
-This skill allows you to discover TikTok influencers using Bright Data's web scraping API.
+Discover TikTok influencers using Bright Data's web scraping API.
 
 ## When to Use
 
-Use this skill when the user:
-- Wants to find TikTok influencers in a specific niche
-- Needs to discover content creators for collaboration
-- Asks for TikTok profiles related to a keyword
+Use this skill when you need to:
+- Find TikTok influencers in a specific niche
+- Discover content creators for collaboration
+- Search TikTok profiles by keyword
 
 ## How to Use
 
@@ -22,16 +22,20 @@ Use this skill when the user:
 $CLAUDE_CONFIG_DIR/skills/brightdata-tiktok/scripts/trigger-scrape.sh "search_keyword"
 ```
 
-This triggers Bright Data to scrape TikTok for the given keyword. It returns a `snapshot_id` that you'll use to fetch results.
+**Parameters:**
+- `search_keyword`: The keyword to search for (e.g., "fitness trainer", "cooking")
+
+**Returns:** A `snapshot_id` used to fetch results
 
 **Example:**
 ```bash
 $CLAUDE_CONFIG_DIR/skills/brightdata-tiktok/scripts/trigger-scrape.sh "fitness trainer"
+# Output: snapshot_id=abc123xyz
 ```
 
-### Step 2: Wait for Scraping to Complete
+### Step 2: Wait for Scraping
 
-Bright Data needs time to scrape TikTok. Wait approximately 2-3 minutes before fetching results.
+Bright Data needs approximately **2-3 minutes** to complete the scrape. Wait before fetching results.
 
 ### Step 3: Fetch Results
 
@@ -39,40 +43,44 @@ Bright Data needs time to scrape TikTok. Wait approximately 2-3 minutes before f
 $CLAUDE_CONFIG_DIR/skills/brightdata-tiktok/scripts/get-snapshot.sh "snapshot_id"
 ```
 
+**Parameters:**
+- `snapshot_id`: The ID returned from trigger-scrape.sh
+
 **Example:**
 ```bash
 $CLAUDE_CONFIG_DIR/skills/brightdata-tiktok/scripts/get-snapshot.sh "abc123xyz"
 ```
 
-## Prerequisites
+**Output file:** `/tmp/data/tiktok_[timestamp].json`
 
-The `BRIGHTDATA_API_KEY` environment variable must be set:
+## Output Data Structure
 
-```bash
-vm0 secret set BRIGHTDATA_API_KEY "your_api_key"
-```
+Each profile in the results includes:
 
-## Output
+| Field | Description |
+|-------|-------------|
+| `profile_id` | Unique TikTok profile ID |
+| `profile_username` | TikTok username (e.g., @username) |
+| `profile_url` | Direct link to the profile |
+| `profile_followers` | Number of followers |
+| `description` | Profile/video description |
+| `url` | Video URL |
 
-Results are saved to `/tmp/data/tiktok_[timestamp].json`
+## Environment Variables
 
-Each profile includes:
-- `profile_id`: Unique TikTok profile ID
-- `profile_username`: TikTok username
-- `profile_url`: Direct link to the profile
-- `profile_followers`: Number of followers
-- `description`: Profile/video description
-- `url`: Video URL
+- `BRIGHTDATA_API_KEY`: Required. Your Bright Data API key.
 
 ## Guidelines
 
 1. Start with broad keywords, then narrow down if needed
-2. The API limits results to 5 profiles per search by default
+2. The API returns up to 5 profiles per search by default
 3. If the snapshot is not ready, wait and retry
 4. Always check for errors in the API response
 
 ## Error Handling
 
-- **"running" status**: Snapshot is still being prepared, wait and retry
-- **401 error**: Check if BRIGHTDATA_API_KEY is set correctly
-- **Empty results**: Try a different or broader keyword
+| Error | Cause | Solution |
+|-------|-------|----------|
+| "running" status | Snapshot still being prepared | Wait 1-2 minutes and retry |
+| 401 error | Invalid API key | Verify BRIGHTDATA_API_KEY is set correctly |
+| Empty results | No matches found | Try a different or broader keyword |
