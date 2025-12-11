@@ -11,7 +11,8 @@ This skill publishes articles to Dev.to using their official API.
 
 Use this skill when:
 - Article content is finalized
-- User confirms they want to publish
+- Featured image has been generated
+- Ready to publish the completed article
 
 ## Prerequisites
 
@@ -26,7 +27,7 @@ To get your API key:
 ## How to Use
 
 ```bash
-devto-publish.sh <article_file> [--title "Title"] [--tags "tag1,tag2,tag3"] [--published true|false] [--image url]
+/home/user/.config/claude/skills/devto-publish/scripts/devto-publish.sh <article_file> [--title "Title"] [--tags "tag1,tag2,tag3"] [--published true|false] [--image url]
 ```
 
 ### Parameters
@@ -39,20 +40,55 @@ devto-publish.sh <article_file> [--title "Title"] [--tags "tag1,tag2,tag3"] [--p
 | --published | No | false | Set to `true` to publish immediately |
 | --image | No | - | Cover image URL |
 
-### Examples
+### Standard Usage for Content Farm Workflow
 
 ```bash
-# Save as draft (safe default)
-devto-publish.sh /home/user/workspace/output/article.md --tags "ai,technology"
-
-# Publish with cover image
-devto-publish.sh /home/user/workspace/output/article.md --tags "ai,tech,automation" --image "https://example.com/image.png"
-
-# Publish immediately
-devto-publish.sh /home/user/workspace/output/article.md --title "My Article" --tags "tech,ai" --published true
+/home/user/.config/claude/skills/devto-publish/scripts/devto-publish.sh \
+  /home/user/workspace/output/article.md \
+  --tags "ai,technology,automation" \
+  --published true
 ```
 
-## Output
+### With Cover Image
+
+Use the fal.ai image URL from the image-gen skill response:
+
+```bash
+/home/user/.config/claude/skills/devto-publish/scripts/devto-publish.sh \
+  /home/user/workspace/output/article.md \
+  --tags "ai,tech,automation" \
+  --image "https://storage.googleapis.com/fal-flux/..." \
+  --published true
+```
+
+## Output Preparation
+
+Before publishing, ensure these files exist in `/home/user/workspace/output/`:
+
+### article.md
+The complete article in Markdown format.
+
+### featured.png
+The generated featured image (copied from `/tmp/images/`).
+
+### metadata.json
+SEO metadata in this format:
+
+```json
+{
+  "title": "Your SEO-optimized title",
+  "description": "Meta description (150-160 characters)",
+  "keywords": ["keyword1", "keyword2", "keyword3"],
+  "sources": [
+    "https://source1.com/article",
+    "https://source2.com/article"
+  ],
+  "word_count": 1200,
+  "generated_at": "2024-01-15T10:30:00Z"
+}
+```
+
+## Response
 
 Returns the Dev.to article URL on success.
 
@@ -62,14 +98,17 @@ Response saved to `/tmp/devto/publish_response.json`:
   "id": 123456,
   "title": "Article Title",
   "url": "https://dev.to/username/article-slug",
-  "published": false
+  "published": true
 }
 ```
 
+**Always report the `url` back to the user after successful publishing.**
+
 ## Guidelines
 
-1. Always publish with `--published false` first (draft) to review on Dev.to
+1. Always use `--published true` to publish publicly (content farm workflow default)
 2. Dev.to supports up to 4 tags per post
 3. Tags should be lowercase, no spaces
-4. Cover images must be URLs (use image-gen skill's fal.ai URL, or upload elsewhere first)
+4. Cover images must be URLs (use the fal.ai URL from image-gen response)
 5. Markdown is fully supported including code blocks with syntax highlighting
+6. Choose tags that match the article topic (e.g., "ai", "technology", "programming", "automation")

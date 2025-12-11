@@ -23,7 +23,7 @@ The `FAL_KEY` environment variable must be set with your fal.ai API key.
 Execute the script with a prompt describing the desired image:
 
 ```bash
-image-gen.sh "prompt" [aspect_ratio] [resolution]
+/home/user/.config/claude/skills/image-gen/scripts/image-gen.sh "prompt" [aspect_ratio] [resolution]
 ```
 
 ### Parameters
@@ -37,21 +37,44 @@ image-gen.sh "prompt" [aspect_ratio] [resolution]
 ### Examples
 
 ```bash
-# Generate a blog header image
-image-gen.sh "A futuristic cityscape with AI robots, digital art style, vibrant colors"
+# Generate a blog header image with default settings
+/home/user/.config/claude/skills/image-gen/scripts/image-gen.sh "Modern AI technology concept, neural networks and data visualization, blue and purple gradient, clean professional style" "16:9" "1K"
 
 # Generate a square image for social media
-image-gen.sh "Modern tech startup office with developers" "1:1"
+/home/user/.config/claude/skills/image-gen/scripts/image-gen.sh "Modern tech startup office with developers" "1:1"
 
 # Generate a high-resolution vertical image
-image-gen.sh "Abstract neural network visualization" "9:16" "2K"
+/home/user/.config/claude/skills/image-gen/scripts/image-gen.sh "Abstract neural network visualization" "9:16" "2K"
 ```
 
 ## Output
 
 - Images are saved to `/tmp/images/generated_[timestamp].png`
 - The script outputs the file path upon completion
-- Image URL from fal.ai is also displayed
+- Image URL from fal.ai is also displayed (use this URL for Dev.to cover images)
+
+## Prompt Guidelines
+
+For best results when creating blog featured images:
+
+1. Describe the article's main theme visually
+2. Include style hints: "modern", "professional", "tech-style", "digital art", "photorealistic", "minimalist"
+3. Specify colors that match the topic mood
+4. Add "professional", "clean", "modern" for business content
+
+Example prompt for an AI article:
+```
+"Modern AI technology concept, neural networks and data visualization, blue and purple gradient, clean professional style"
+```
+
+## Copying Output for Publishing
+
+After generating the image, copy it to the output folder:
+
+```bash
+mkdir -p /home/user/workspace/output
+cp /tmp/images/generated_*.png /home/user/workspace/output/featured.png
+```
 
 ## Response Format
 
@@ -67,14 +90,7 @@ The fal.ai API returns:
 }
 ```
 
-## Guidelines
-
-1. Use descriptive prompts for best results
-2. Include style hints like "digital art", "photorealistic", "minimalist"
-3. Specify colors and mood when relevant
-4. For blog headers, use 16:9 aspect ratio
-5. 1K resolution is usually sufficient for web use
-6. Add "professional", "clean", "modern" for business content
+Use the `url` field directly as the cover image URL when publishing to Dev.to.
 
 ## Pricing
 
