@@ -18,25 +18,19 @@ vm0 cook "echo hello world to readme.md"
 
 ## Setup Secrets
 
-All cookbooks require Claude Code authentication. Set up the required secrets:
+All cookbooks require Claude Code authentication. Create a `.env` file in the cookbook directory:
 
 ```bash
-# Generate Claude Code OAuth token
-claude setup-token
+# Generate token first: claude setup-token
+CLAUDE_CODE_OAUTH_TOKEN=<your-token>
 
-# Set the token as a secret (copy the token from claude setup-token output)
-vm0 secret set CLAUDE_CODE_OAUTH_TOKEN <your-token>
-
-# For cookbooks with additional API requirements, set those secrets too
-# Example for 103-fetch-stores:
-vm0 secret set DUMPLING_AI_API_KEY <your-api-key>
-
-# Example for 104-content-farm:
-vm0 secret set FAL_KEY <your-fal-key>
-vm0 secret set DEVTO_API_KEY <your-devto-key>
+# Additional secrets (check vm0.yaml for requirements)
+DUMPLING_AI_API_KEY=<your-api-key>    # 103-fetch-stores
+FAL_KEY=<your-fal-key>                 # 104-content-farm
+DEVTO_API_KEY=<your-devto-key>         # 104-content-farm
 ```
 
-Each cookbook may require different API keys. Check the `vm0.yaml` file in each cookbook directory to see which secrets are needed.
+Secrets are auto-loaded from `.env` or environment variables when running `vm0 cook` or `vm0 run`.
 
 ## Setup and Run
 
