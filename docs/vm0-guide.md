@@ -188,12 +188,21 @@ See [Complete Example](#complete-example-travel-planner-agent) for a full skill 
 
 ## Using Secrets
 
-For sensitive data like API keys, use VM0 secrets instead of hardcoding.
+For sensitive data like API keys, use environment variables or `.env` files instead of hardcoding.
 
 ### Setting Secrets
 
+Create a `.env` file in your project directory:
+
 ```bash
-vm0 secret set MY_API_KEY "sk-your-secret-key"
+# .env
+MY_API_KEY=sk-your-secret-key
+```
+
+Or pass secrets directly when running:
+
+```bash
+vm0 run my-agent --secrets MY_API_KEY=sk-your-secret-key "prompt"
 ```
 
 ### Using in vm0.yaml
@@ -486,7 +495,15 @@ chmod +x travel-planner-volume/skills/search-places/scripts/search-places.sh
 
 ### Cook Agent
 
+Create a `.env` file with your API key:
+
 ```bash
-vm0 secret set DUMPLING_AI_API_KEY "your-api-key"
+# .env
+DUMPLING_AI_API_KEY=your-api-key
+```
+
+Then run:
+
+```bash
 vm0 cook "Plan a 3-day trip to Tokyo, Japan. I love food and culture."
 ```
