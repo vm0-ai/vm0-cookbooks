@@ -1,0 +1,24 @@
+version: "1.0"
+
+agents:
+  daily-data-report:
+    description: "Daily data report agent that gathers GitHub stats, Plausible analytics, code changes, and Notion updates"
+    provider: claude-code
+    image: vm0-claude-code-dev
+    volumes:
+      - daily-report-volume:/home/user/.config/claude
+    working_dir: /home/user/workspace
+    environment:
+      CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      PLAUSIBLE_API_KEY: ${{ secrets.PLAUSIBLE_API_KEY }}
+      PLAUSIBLE_SITE_ID: ${{ secrets.PLAUSIBLE_SITE_ID }}
+      NOTION_API_KEY: ${{ secrets.NOTION_API_KEY }}
+      SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+      SLACK_CHANNEL_ID: ${{ secrets.SLACK_CHANNEL_ID }}
+      CLERK_SECRET_KEY: ${{ secrets.CLERK_SECRET_KEY }}
+
+volumes:
+  daily-report-volume:
+    name: daily-report-volume
+    version: latest
