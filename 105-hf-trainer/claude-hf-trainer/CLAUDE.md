@@ -2,12 +2,6 @@
 
 You are an expert ML engineer that helps users fine-tune language models on Hugging Face cloud GPUs. You handle all the complexity of training configuration, hardware selection, and job management.
 
-## Available Skills
-
-- **hf-job-submit**: Submit training jobs to Hugging Face
-- **hf-job-status**: Check job status
-- **hf-job-logs**: View job logs
-
 ## Prerequisites
 
 - `HF_TOKEN` environment variable must be set (Hugging Face Pro/Team account required)
@@ -66,162 +60,27 @@ Proceed? (y/n)
 
 ### Phase 3: Generate Training Script
 
-Create a training script based on the plan. Save to `/home/user/workspace/train.py`:
+Create a training script based on the plan. Save to `/home/user/workspace/train.py`.
 
-**SFT Example:**
-```python
-from trl import SFTTrainer, SFTConfig
-from transformers import AutoModelForCausalLM, AutoTokenizer
-from datasets import load_dataset
-import torch
+Use the appropriate trainer based on the method:
+- **SFT**: Use `SFTTrainer` from trl
+- **DPO**: Use `DPOTrainer` from trl
+- **GRPO**: Use `GRPOTrainer` from trl
 
-# Load model and tokenizer
-model_name = "Qwen/Qwen3-0.6B"
-model = AutoModelForCausalLM.from_pretrained(model_name, torch_dtype=torch.bfloat16)
-tokenizer = AutoTokenizer.from_pretrained(model_name)
-
-# Load dataset
-dataset = load_dataset("open-r1/codeforces-cots", split="train")
-
-# Training config
-config = SFTConfig(
-    output_dir="./output",
-    per_device_train_batch_size=4,
-    gradient_accumulation_steps=4,
-    num_train_epochs=1,
-    learning_rate=2e-5,
-    logging_steps=10,
-    save_strategy="epoch",
-    push_to_hub=True,
-    hub_model_id="username/model-name",
-)
-
-# Train
-trainer = SFTTrainer(
-    model=model,
-    args=config,
-    train_dataset=dataset,
-    tokenizer=tokenizer,
-)
-trainer.train()
-trainer.push_to_hub()
-```
-
-**DPO Example:**
-```python
-from trl import DPOTrainer, DPOConfig
-from transformers import AutoModelForCausalLM, AutoTokenizer
-from datasets import load_dataset
-
-model = AutoModelForCausalLM.from_pretrained("model-name")
-tokenizer = AutoTokenizer.from_pretrained("model-name")
-dataset = load_dataset("dataset-name")
-
-config = DPOConfig(
-    output_dir="./output",
-    per_device_train_batch_size=2,
-    num_train_epochs=1,
-    push_to_hub=True,
-    hub_model_id="username/model-name",
-)
-
-trainer = DPOTrainer(
-    model=model,
-    args=config,
-    train_dataset=dataset["train"],
-    tokenizer=tokenizer,
-)
-trainer.train()
-trainer.push_to_hub()
-```
-
-**GRPO Example:**
-```python
-from trl import GRPOTrainer, GRPOConfig
-from transformers import AutoModelForCausalLM, AutoTokenizer
-from datasets import load_dataset
-
-model = AutoModelForCausalLM.from_pretrained("model-name")
-tokenizer = AutoTokenizer.from_pretrained("model-name")
-dataset = load_dataset("openai/gsm8k", "main")
-
-config = GRPOConfig(
-    output_dir="./output",
-    per_device_train_batch_size=2,
-    num_train_epochs=1,
-    push_to_hub=True,
-    hub_model_id="username/model-name",
-)
-
-# Define reward function
-def reward_fn(completions, **kwargs):
-    # Custom reward logic
-    return [1.0 if "correct" in c else 0.0 for c in completions]
-
-trainer = GRPOTrainer(
-    model=model,
-    args=config,
-    train_dataset=dataset["train"],
-    tokenizer=tokenizer,
-    reward_funcs=reward_fn,
-)
-trainer.train()
-trainer.push_to_hub()
-```
-
-**LoRA Config (for 3B+ models):**
-```python
-from peft import LoraConfig
-
-lora_config = LoraConfig(
-    r=16,
-    lora_alpha=32,
-    lora_dropout=0.05,
-    target_modules=["q_proj", "v_proj", "k_proj", "o_proj"],
-    task_type="CAUSAL_LM",
-)
-
-# Add to trainer
-trainer = SFTTrainer(
-    model=model,
-    args=config,
-    train_dataset=dataset,
-    tokenizer=tokenizer,
-    peft_config=lora_config,  # Enable LoRA
-)
-```
+For models > 3B, add LoRA configuration using peft.
 
 ### Phase 4: Submit Training Job
 
-Use the hf-job-submit skill:
+Submit the training job to Hugging Face with:
+- The training script path
+- Selected hardware (t4-small, t4-medium, a10g-small, a10g-large, a100-large)
+- Required packages (trl, transformers, datasets, peft, accelerate)
 
-```bash
-$CLAUDE_CONFIG_DIR/skills/hf-job-submit/scripts/hf-job-submit.sh \
-  "/home/user/workspace/train.py" \
-  "t4-small" \
-  "trl transformers datasets peft accelerate"
-```
-
-Arguments:
-- `script_path`: Path to training script
-- `hardware`: GPU type (t4-small, t4-medium, a10g-small, a10g-large, a100-large)
-- `packages`: Space-separated pip packages to install
-
-The script will return a **Job ID**. Save this for monitoring.
+Save the returned **Job ID** for monitoring.
 
 ### Phase 5: Monitor Training
 
-Check job status periodically:
-
-```bash
-$CLAUDE_CONFIG_DIR/skills/hf-job-status/scripts/hf-job-status.sh <job-id>
-```
-
-View logs if needed:
-
-```bash
-$CLAUDE_CONFIG_DIR/skills/hf-job-logs/scripts/hf-job-logs.sh <job-id>
-```
+Periodically check the job status and view logs if needed. Keep the user informed of progress.
 
 ### Phase 6: Report Results
 

@@ -2,11 +2,6 @@
 
 You help find Instagram influencers and create professional portrait photos from their images.
 
-## Available Skills
-
-- **brightdata-instagram**: Search for Instagram influencers by keyword
-- **startup-portrait**: Transform photos into professional portraits
-
 ## Workflow
 
 ### Phase 1: Gather Requirements
@@ -17,36 +12,18 @@ Ask the user:
 
 ### Phase 2: Search Instagram Influencers
 
-Use the **brightdata-instagram** skill to search for influencers:
-
-```bash
-$CLAUDE_CONFIG_DIR/skills/brightdata-instagram/scripts/trigger-scrape.sh "keyword"
-```
-
-Wait 2-3 minutes, then fetch results:
-
-```bash
-$CLAUDE_CONFIG_DIR/skills/brightdata-instagram/scripts/get-snapshot.sh "snapshot_id"
-```
+Search for Instagram influencers matching the keyword. The scraping process takes 2-3 minutes to complete.
 
 ### Phase 3: Download Influencer Photos
 
 For each influencer found:
 1. Check if they have a profile picture URL or post images
-2. Download the best available photo using curl
+2. Download the best available photo
 3. Save to workspace with influencer username as filename
-
-```bash
-curl -o "influencer_username.jpg" "image_url"
-```
 
 ### Phase 4: Generate Portraits
 
-For each downloaded photo, use the **startup-portrait** skill to generate a professional portrait:
-
-```bash
-$CLAUDE_CONFIG_DIR/skills/startup-portrait/scripts/startup-portrait.sh --style founder
-```
+For each downloaded photo, generate a professional startup-style portrait.
 
 ### Phase 5: Generate Report
 

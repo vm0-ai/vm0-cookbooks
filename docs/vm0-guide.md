@@ -140,7 +140,8 @@ The `CLAUDE.md` file is the heart of your agent. It defines:
 See [Complete Example: Travel Planner Agent](#complete-example-travel-planner-agent) for a full example.
 
 ### Step 4: Cook it
-```
+
+```bash
 vm0 cook "Your prompt here"
 ```
 
@@ -163,7 +164,7 @@ skills/
 ### Key Components
 
 1. **SKILL.md**: Document when to use, how to call, required environment variables, and expected output
-2. **Script**: Handle errors, validate inputs, save results to `/tmp/data/`
+2. **Script**: Handle errors, validate inputs
 
 ### Making Scripts Executable
 
@@ -172,17 +173,6 @@ Scripts must have execute permissions. Add them before pushing:
 ```bash
 chmod +x my-volume/skills/my-skill/scripts/my-script.sh
 ```
-
-### Referencing in CLAUDE.md
-
-Use the `$CLAUDE_CONFIG_DIR` environment variable (built-in to Claude Code) to reference skills:
-
-```markdown
-Use the my-skill skill to [do something].
-Usage: $CLAUDE_CONFIG_DIR/skills/my-skill/scripts/my-script.sh "arg1" "arg2"
-```
-
-See [Complete Example](#complete-example-travel-planner-agent) for a full skill implementation.
 
 ---
 
@@ -286,18 +276,19 @@ vm0 artifact pull
 ### CLAUDE.md
 
 1. **Start with role**: "You are a [specific role]..."
-2. **Be specific**: Vague instructions lead to inconsistent behavior 
-3. **Define structure**: Use phases for complex workflows
-4. **Set boundaries**: Clarify what the agent should and shouldn't do
-5. **Include output examples**: Show expected file formats
-6. **End with action**: Prompt the agent to begin (e.g., "Where would you like to travel?")
+2. **Use natural language**: Describe tasks in plain language, no code
+3. **Don't reference skills**: Claude Code discovers skills automatically
+4. **Define structure**: Use phases for complex workflows
+5. **Set boundaries**: Clarify what the agent should and shouldn't do
+6. **Include output examples**: Show expected file formats (not code)
+7. **End with action**: Prompt the agent to begin (e.g., "Where would you like to travel?")
 
 ### Skills
 
-1. **Document thoroughly**: Good SKILL.md prevents misuse
-2. **Handle errors**: Check inputs and environment
-3. **Provide feedback**: Echo progress and results
-4. **Save outputs**: Write to `/tmp/data/` for persistence
+1. **Complete documentation**: SKILL.md must include full usage instructions
+2. **Include examples**: Show how to call the script with real examples
+3. **Handle errors**: Check inputs and environment in scripts
+4. **Provide feedback**: Echo progress and results
 
 ### Secrets
 
@@ -360,16 +351,10 @@ You are a travel planning assistant that helps users create detailed trip itiner
 3. Check for any constraints (mobility, dietary, must-see places)
 
 ### Phase 2: Research the Destination
-Use the search-places skill to find:
+Search for relevant information about the destination:
 - Attractions and landmarks
 - Restaurants and cafes
 - Hotels and accommodations
-
-Usage: $CLAUDE_CONFIG_DIR/skills/search-places/scripts/search-places.sh "query" "location"
-
-Examples:
-- $CLAUDE_CONFIG_DIR/skills/search-places/scripts/search-places.sh "museum" "Tokyo, Japan"
-- $CLAUDE_CONFIG_DIR/skills/search-places/scripts/search-places.sh "ramen restaurant" "Shinjuku, Tokyo"
 
 ### Phase 3: Build the Itinerary
 1. Group nearby locations together
@@ -415,7 +400,7 @@ Where would you like to travel?
 
 ### skills/search-places/SKILL.md
 
-```markdown
+````markdown
 ---
 name: search-places
 description: Search for places using Dumpling AI's Google Maps API
@@ -425,22 +410,35 @@ description: Search for places using Dumpling AI's Google Maps API
 
 Search for places, businesses, and points of interest.
 
-## How to Use
+## Usage
 
+```bash
 $CLAUDE_CONFIG_DIR/skills/search-places/scripts/search-places.sh "query" "location"
+```
 
-Arguments:
-- query: What to search for (e.g., "coffee shop", "museum")
-- location: Where to search (e.g., "Tokyo, Japan")
+### Arguments
+| Argument | Required | Description |
+|----------|----------|-------------|
+| query | Yes | What to search for (e.g., "coffee shop", "museum") |
+| location | Yes | Where to search (e.g., "Tokyo, Japan") |
+
+### Examples
+```bash
+# Search for museums in Tokyo
+./search-places.sh "museum" "Tokyo, Japan"
+
+# Search for ramen restaurants in Shinjuku
+./search-places.sh "ramen restaurant" "Shinjuku, Tokyo"
+```
 
 ## Prerequisites
 
-The DUMPLING_AI_API_KEY environment variable must be set.
+The `DUMPLING_AI_API_KEY` environment variable must be set.
 
 ## Output
 
-Returns places with: title, address, rating, ratingCount, category, phoneNumber, website, latitude/longitude.
-```
+Returns JSON with places containing: title, address, rating, ratingCount, category, phoneNumber, website, latitude/longitude.
+````
 
 ### skills/search-places/scripts/search-places.sh
 
@@ -464,10 +462,6 @@ fi
 
 QUERY="$1"
 LOCATION="${2:-}"
-OUTPUT_DIR="/tmp/data"
-OUTPUT_FILE="${OUTPUT_DIR}/places_$(date +%Y%m%d_%H%M%S).json"
-
-mkdir -p "$OUTPUT_DIR"
 
 if [ -n "$LOCATION" ]; then
     REQUEST_BODY=$(jq -n --arg q "$QUERY" --arg loc "$LOCATION" '{query: $q, location: $loc}')
@@ -480,9 +474,6 @@ response=$(curl -s -X POST "$API_URL" \
     -H "Authorization: Bearer $DUMPLING_AI_API_KEY" \
     -d "$REQUEST_BODY")
 
-echo "$response" | jq '.' > "$OUTPUT_FILE"
-echo "Results saved to: $OUTPUT_FILE"
-echo ""
 echo "Top places found:"
 echo "$response" | jq -r '.places[:10][] | "- \(.title) ★\(.rating // "N/A") (\(.ratingCount // 0) reviews) - \(.address)"'
 ```
