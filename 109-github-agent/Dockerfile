@@ -22,7 +22,3 @@ RUN curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | d
 
 # Install Claude Code globally
 RUN npm install -g @anthropic-ai/claude-code
-
-# Switch to non-root user (already exists in base image)
-USER user
-WORKDIR /home/user

@@ -4,7 +4,7 @@ agents:
   github-agent:
     description: "GitHub automation assistant using gh CLI for repos, issues, PRs, and more"
     provider: claude-code
-    image: 109-github-cli
+    image: 109-github-cli:latest
     volumes:
       - claude-github-cli:/home/user/.claude
     working_dir: /home/user/workspace

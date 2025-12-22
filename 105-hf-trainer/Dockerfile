@@ -17,7 +17,3 @@ RUN npm install -g @anthropic-ai/claude-code
 
 # Install Hugging Face CLI
 RUN pip3 install --break-system-packages huggingface_hub
-
-# Switch to non-root user (already exists in base image)
-USER user
-WORKDIR /home/user
