@@ -27,7 +27,7 @@ To get your API key:
 ## How to Use
 
 ```bash
-/home/user/.config/claude/skills/devto-publish/scripts/devto-publish.sh <article_file> [--title "Title"] [--tags "tag1,tag2,tag3"] [--published true|false] [--image url]
+/home/user/.claude/skills/devto-publish/scripts/devto-publish.sh <article_file> [--title "Title"] [--tags "tag1,tag2,tag3"] [--published true|false] [--image url]
 ```
 
 ### Parameters
@@ -43,7 +43,7 @@ To get your API key:
 ### Standard Usage for Content Farm Workflow
 
 ```bash
-/home/user/.config/claude/skills/devto-publish/scripts/devto-publish.sh \
+/home/user/.claude/skills/devto-publish/scripts/devto-publish.sh \
   /home/user/workspace/output/article.md \
   --tags "ai,technology,automation" \
   --published true
@@ -54,7 +54,7 @@ To get your API key:
 Use the fal.ai image URL from the image-gen skill response:
 
 ```bash
-/home/user/.config/claude/skills/devto-publish/scripts/devto-publish.sh \
+/home/user/.claude/skills/devto-publish/scripts/devto-publish.sh \
   /home/user/workspace/output/article.md \
   --tags "ai,tech,automation" \
   --image "https://storage.googleapis.com/fal-flux/..." \

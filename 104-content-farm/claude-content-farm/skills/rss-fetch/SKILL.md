@@ -43,7 +43,7 @@ rss-fetch.sh "url1" "url2" "url3" ...
 ### Example with All Default Sources
 
 ```bash
-/home/user/.config/claude/skills/rss-fetch/scripts/rss-fetch.sh \
+/home/user/.claude/skills/rss-fetch/scripts/rss-fetch.sh \
   "https://hnrss.org/frontpage" \
   "https://techcrunch.com/feed/" \
   "https://www.wired.com/feed/rss" \

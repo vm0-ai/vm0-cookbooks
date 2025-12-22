@@ -4,7 +4,7 @@ agents:
   github-agent:
     description: "A demo agent with beta_system_prompt and beta_system_skills"
     provider: claude-code
-    image: vm0-github-cli
+    image: 109-github-cli
     beta_system_prompt: AGENTS.md
     beta_system_skills:
       - https://github.com/vm0-ai/vm0-skills/tree/main/github

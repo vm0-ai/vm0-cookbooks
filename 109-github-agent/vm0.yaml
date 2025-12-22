@@ -6,7 +6,7 @@ agents:
     provider: claude-code
     image: 109-github-cli
     volumes:
-      - claude-github-cli:/home/user/.config/claude
+      - claude-github-cli:/home/user/.claude
     working_dir: /home/user/workspace
     environment:
       CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}

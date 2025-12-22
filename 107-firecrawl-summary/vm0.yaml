@@ -4,9 +4,9 @@ agents:
   firecrawl-summary:
     description: "Crawl websites, filter relevant articles, summarize with AI, and post to Slack"
     provider: claude-code
-    image: vm0-claude-code
+    image: @vm0/claude-code:latest
     volumes:
-      - claude-firecrawl-summary:/home/user/.config/claude
+      - claude-firecrawl-summary:/home/user/.claude
     working_dir: /home/user/workspace
     environment:
       CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}

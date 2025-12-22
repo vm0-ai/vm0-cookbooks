@@ -4,9 +4,9 @@ agents:
   daily-data-report:
     description: "Daily data report agent that gathers GitHub stats, Plausible analytics, code changes, and Notion updates"
     provider: claude-code
-    image: vm0-claude-code-dev
+    image: @vm0/claude-code:latest
     volumes:
-      - daily-report-volume:/home/user/.config/claude
+      - daily-report-volume:/home/user/.claude
     working_dir: /home/user/workspace
     environment:
       CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}

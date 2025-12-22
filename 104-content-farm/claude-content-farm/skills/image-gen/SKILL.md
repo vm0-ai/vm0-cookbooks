@@ -23,7 +23,7 @@ The `FAL_KEY` environment variable must be set with your fal.ai API key.
 Execute the script with a prompt describing the desired image:
 
 ```bash
-/home/user/.config/claude/skills/image-gen/scripts/image-gen.sh "prompt" [aspect_ratio] [resolution]
+/home/user/.claude/skills/image-gen/scripts/image-gen.sh "prompt" [aspect_ratio] [resolution]
 ```
 
 ### Parameters
@@ -38,13 +38,13 @@ Execute the script with a prompt describing the desired image:
 
 ```bash
 # Generate a blog header image with default settings
-/home/user/.config/claude/skills/image-gen/scripts/image-gen.sh "Modern AI technology concept, neural networks and data visualization, blue and purple gradient, clean professional style" "16:9" "1K"
+/home/user/.claude/skills/image-gen/scripts/image-gen.sh "Modern AI technology concept, neural networks and data visualization, blue and purple gradient, clean professional style" "16:9" "1K"
 
 # Generate a square image for social media
-/home/user/.config/claude/skills/image-gen/scripts/image-gen.sh "Modern tech startup office with developers" "1:1"
+/home/user/.claude/skills/image-gen/scripts/image-gen.sh "Modern tech startup office with developers" "1:1"
 
 # Generate a high-resolution vertical image
-/home/user/.config/claude/skills/image-gen/scripts/image-gen.sh "Abstract neural network visualization" "9:16" "2K"
+/home/user/.claude/skills/image-gen/scripts/image-gen.sh "Abstract neural network visualization" "9:16" "2K"
 ```
 
 ## Output
