@@ -88,7 +88,7 @@ agents:
   my-agent:
     description: "Description of what your agent does"
     provider: claude-code
-    image: "@vm0/claude-code:latest"
+    image: vm0/claude-code:latest
     volumes:
       - my-volume:/home/user/.claude
     working_dir: /home/user/workspace
@@ -325,7 +325,7 @@ agents:
   travel-planner:
     description: "Travel planning assistant that creates personalized itineraries"
     provider: claude-code
-    image: "@vm0/claude-code:latest"
+    image: vm0/claude-code:latest
     volumes:
       - travel-planner-volume:/home/user/.claude
     working_dir: /home/user/workspace
