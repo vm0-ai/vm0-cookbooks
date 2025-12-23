@@ -1,7 +1,7 @@
 version: "1.0"
 
 agents:
-  intro-skills:
+  codex-skills:
     provider: codex
     instructions: AGENTS.md
     skills:
