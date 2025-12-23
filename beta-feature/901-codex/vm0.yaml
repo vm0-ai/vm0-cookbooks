@@ -1,0 +1,11 @@
+version: "1.0"
+
+agents:
+  intro-skills:
+    provider: codex
+    instructions: AGENTS.md
+    skills:
+      - https://github.com/vm0-ai/vm0-skills/tree/main/elevenlabs
+    environment:
+      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+      ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
