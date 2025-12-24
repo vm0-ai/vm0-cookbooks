@@ -80,7 +80,7 @@ vm0 run intro --artifact-name artifact "echo hello world to readme.md"
 ### Pull the result
 
 ```bash
-cd my-artifact
+cd artifact
 vm0 artifact pull
 cat readme.md
 ```
