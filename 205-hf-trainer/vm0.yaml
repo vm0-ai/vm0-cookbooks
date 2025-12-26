@@ -4,7 +4,7 @@ agents:
   hf-trainer:
     description: "Fine-tune LLMs on Hugging Face cloud GPUs with natural language"
     provider: claude-code
-    image: 105-hf-cli
+    image: 205-hf-cli
     volumes:
       - claude-files:/home/user/.claude
     working_dir: /home/user/workspace
