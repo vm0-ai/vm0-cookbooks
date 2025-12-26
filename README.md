@@ -2,6 +2,12 @@
 
 A collection of VM0 Agent examples.
 
+## Examples Organization
+
+- **1xx series**: Tutorials - Introduction to VM0 features and concepts
+- **2xx series**: Showcases - Real-world application examples
+- **9xx series**: Experimental - Beta features and experimental implementations
+
 ## Installation
 
 ```bash
