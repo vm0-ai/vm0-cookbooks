@@ -5,12 +5,10 @@ agents:
     provider: claude-code
     instructions: AGENTS.md
     # Shorthand syntax for secrets - transforms to environment entries at compose time
-    # These become: API_KEY: ${{ secrets.API_KEY }}, DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+    # These become: CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
     experimental_secrets:
-      - API_KEY
-      - DB_PASSWORD
+      - CLAUDE_CODE_OAUTH_TOKEN
     # Shorthand syntax for vars - transforms to environment entries at compose time
-    # These become: REGION: ${{ vars.REGION }}, ENV_NAME: ${{ vars.ENV_NAME }}
+    # These become: TEST_VARS: ${{ vars.TEST_VARS }}
     experimental_vars:
-      - REGION
-      - ENV_NAME
+      - TEST_VARS
