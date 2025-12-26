@@ -1,0 +1,16 @@
+version: "1.0"
+
+agents:
+  shorthand-demo:
+    provider: claude-code
+    instructions: AGENTS.md
+    # Shorthand syntax for secrets - transforms to environment entries at compose time
+    # These become: API_KEY: ${{ secrets.API_KEY }}, DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+    experimental_secrets:
+      - API_KEY
+      - DB_PASSWORD
+    # Shorthand syntax for vars - transforms to environment entries at compose time
+    # These become: REGION: ${{ vars.REGION }}, ENV_NAME: ${{ vars.ENV_NAME }}
+    experimental_vars:
+      - REGION
+      - ENV_NAME
