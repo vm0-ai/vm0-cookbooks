@@ -1,7 +1,7 @@
 version: "1.0"
 
 agents:
-  intro-volumes:
+  intro-volume:
     provider: claude-code
     image: vm0/claude-code:latest
     volumes:
