@@ -4,7 +4,6 @@ agents:
   content-farm:
     description: "AI-powered blog content generation agent"
     provider: claude-code
-    image: vm0/claude-code:latest
     volumes:
       - claude-files:/home/user/.claude
     working_dir: /home/user/workspace
