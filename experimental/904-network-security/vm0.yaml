@@ -12,3 +12,5 @@ agents:
       # Get token using: claude setup-token, then add to .env file
       CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
     experimental_network_security: true
+    experimental_runner:
+      group: vm0/production
