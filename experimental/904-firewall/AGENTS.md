@@ -73,12 +73,8 @@ curl -v --max-time 10 https://www.google.com 2>&1 | head -50
 
 ## Report Format
 
-Create `firewall-test-results.md` with:
-
 1. **Test summary** - Pass/fail for each test case
 2. **Connection details** - IP addresses, ports, TLS status
 3. **Network log table** - Timestamp, target, status, method
 4. **Security analysis** - Effectiveness of blocking mechanisms
 5. **Compliance status** - All requirements met or not
-
-Remember: Connection timeouts and SSL errors are expected security behaviors, not failures. Document them as successful blocks.
