@@ -1,0 +1,49 @@
+version: "1.0"
+
+agents:
+  905-seal-secrets:
+    provider: claude-code
+    # Build agentic workflow using natural language
+    instructions: AGENTS.md
+    # Agent skills - see https://github.com/vm0-ai/vm0-skills for available skills
+    # skills:
+    #   - https://github.com/vm0-ai/vm0-skills/tree/main/github
+    environment:
+      # Get token using: claude setup-token, then add to .env file
+      CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+      # Example sensitive credentials for testing seal-secrets
+      DATABASE_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}
+      API_KEY: ${{ secrets.API_KEY }}
+    # Experimental firewall with MITM and seal-secrets enabled
+    experimental_firewall:
+      enabled: true
+      # Enable HTTPS interception for traffic inspection
+      experimental_mitm: true
+      # Enable secrets sealing - encrypts sensitive environment variables
+      experimental_seal_secrets: true
+      rules:
+        # Allow common development and API domains
+        - domain: "*.github.com"
+          action: "ALLOW"
+        - domain: "*.githubusercontent.com"
+          action: "ALLOW"
+        - domain: "api.anthropic.com"
+          action: "ALLOW"
+        - domain: "*.openai.com"
+          action: "ALLOW"
+        # Allow common cloud services for credential validation
+        - domain: "*.amazonaws.com"
+          action: "ALLOW"
+        - domain: "*.googleapis.com"
+          action: "ALLOW"
+        # Block all private networks
+        - ip: "10.0.0.0/8"
+          action: "DENY"
+        - ip: "172.16.0.0/12"
+          action: "DENY"
+        - ip: "192.168.0.0/16"
+          action: "DENY"
+        # Default deny
+        - final: "DENY"
+    experimental_runner:
+      group: vm0/production
