@@ -22,28 +22,7 @@ agents:
       # Enable secrets sealing - encrypts sensitive environment variables
       experimental_seal_secrets: true
       rules:
-        # Allow common development and API domains
-        - domain: "*.github.com"
-          action: "ALLOW"
-        - domain: "*.githubusercontent.com"
-          action: "ALLOW"
-        - domain: "api.anthropic.com"
-          action: "ALLOW"
-        - domain: "*.openai.com"
-          action: "ALLOW"
-        # Allow common cloud services for credential validation
-        - domain: "*.amazonaws.com"
-          action: "ALLOW"
-        - domain: "*.googleapis.com"
-          action: "ALLOW"
-        # Block all private networks
-        - ip: "10.0.0.0/8"
-          action: "DENY"
-        - ip: "172.16.0.0/12"
-          action: "DENY"
-        - ip: "192.168.0.0/16"
-          action: "DENY"
         # Default deny
-        - final: "DENY"
+        - final: ALLOW
     experimental_runner:
       group: vm0/production

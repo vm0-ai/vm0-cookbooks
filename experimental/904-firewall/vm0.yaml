@@ -14,16 +14,11 @@ agents:
     # Experimental firewall configuration - see PR #1027
     experimental_firewall:
       enabled: true
-      experimental_mitm: false
-      experimental_seal_secrets: false
       rules:
         # Allow GitHub domains for agent operations
         - domain: "*.github.com"
           action: "ALLOW"
         - domain: "*.githubusercontent.com"
-          action: "ALLOW"
-        # Allow Claude API access
-        - domain: "api.anthropic.com"
           action: "ALLOW"
         # Block private network ranges
         - ip: "10.0.0.0/8"
