@@ -11,23 +11,23 @@ agents:
     environment:
       # Get token using: claude setup-token, then add to .env file
       CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
-    # Experimental firewall configuration - see PR #1027
+    # Experimental firewall configuration
     experimental_firewall:
       enabled: true
       rules:
         # Allow GitHub domains for agent operations
         - domain: "*.github.com"
-          action: "ALLOW"
+          action: ALLOW
         - domain: "*.githubusercontent.com"
-          action: "ALLOW"
+          action: ALLOW
         # Block private network ranges
         - ip: "10.0.0.0/8"
-          action: "DENY"
+          action: DENY
         - ip: "172.16.0.0/12"
-          action: "DENY"
+          action: DENY
         - ip: "192.168.0.0/16"
-          action: "DENY"
+          action: DENY
         # Default deny all other traffic
-        - final: "DENY"
+        - final: DENY
     experimental_runner:
       group: vm0/production
