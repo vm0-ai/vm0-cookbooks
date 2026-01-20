@@ -1,0 +1,9 @@
+version: "1.0"
+
+agents:
+  905-credential:
+    provider: claude-code
+    instructions: AGENTS.md
+    environment:
+      # Get token using: claude setup-token, use `vm0 experimental-credential set`
+      CLAUDE_CODE_OAUTH_TOKEN: ${{ credentials.CLAUDE_CODE_OAUTH_TOKEN }}
