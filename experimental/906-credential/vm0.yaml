@@ -1,7 +1,7 @@
 version: "1.0"
 
 agents:
-  905-credential:
+  906-credential:
     provider: claude-code
     instructions: AGENTS.md
     environment:
