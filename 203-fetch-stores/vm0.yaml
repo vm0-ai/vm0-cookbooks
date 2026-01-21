@@ -3,7 +3,7 @@ version: "1.0"
 agents:
   fetch-stores:
     description: "A demo agent"
-    provider: claude-code
+    framework: claude-code
     volumes:
       - claude-files:/home/user/.claude
     working_dir: /home/user/workspace

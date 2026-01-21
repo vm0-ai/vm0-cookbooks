@@ -2,7 +2,7 @@ version: "1.0"
 
 agents:
   intro:
-    provider: claude-code
+    framework: claude-code
     instructions: AGENTS.md
     environment:
       CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}

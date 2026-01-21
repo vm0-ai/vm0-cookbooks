@@ -2,7 +2,7 @@ version: "1.0"
 
 agents:
   906-credential:
-    provider: claude-code
+    framework: claude-code
     instructions: AGENTS.md
     environment:
       # Get token using: claude setup-token, use `vm0 experimental-credential set`

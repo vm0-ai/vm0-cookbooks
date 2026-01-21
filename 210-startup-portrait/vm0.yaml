@@ -3,7 +3,7 @@ version: "1.0"
 agents:
   startup-portrait:
     description: "Scan images and generate professional startup team portraits"
-    provider: claude-code
+    framework: claude-code
     volumes:
       - startup-portrait-volume:/home/user/.claude
     working_dir: /home/user/workspace

@@ -3,7 +3,7 @@ version: "1.0"
 agents:
   github-agent:
     description: "GitHub automation assistant using gh CLI for repos, issues, PRs, and more"
-    provider: claude-code
+    framework: claude-code
     apps: 
       - github
     volumes:

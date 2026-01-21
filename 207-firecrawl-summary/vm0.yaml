@@ -3,7 +3,7 @@ version: "1.0"
 agents:
   firecrawl-summary:
     description: "Crawl websites, filter relevant articles, summarize with AI, and post to Slack"
-    provider: claude-code
+    framework: claude-code
     volumes:
       - claude-firecrawl-summary:/home/user/.claude
     working_dir: /home/user/workspace

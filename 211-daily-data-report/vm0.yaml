@@ -3,7 +3,7 @@ version: "1.0"
 agents:
   daily-data-report:
     description: "Daily data report agent that gathers GitHub stats, Plausible analytics, code changes, and Notion updates"
-    provider: claude-code
+    framework: claude-code
     volumes:
       - daily-report-volume:/home/user/.claude
     working_dir: /home/user/workspace

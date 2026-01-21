@@ -3,7 +3,7 @@ version: "1.0"
 agents:
   competitor-research:
     description: "AI-powered competitor research agent that discovers competitors, analyzes company profiles, product offerings, and customer reviews, then compiles reports to Notion"
-    provider: claude-code
+    framework: claude-code
     volumes:
       - claude-competitor-research:/home/user/.claude
     working_dir: /home/user/workspace

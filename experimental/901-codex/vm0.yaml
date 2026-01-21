@@ -2,7 +2,7 @@ version: "1.0"
 
 agents:
   codex-skills:
-    provider: codex
+    framework: codex
     instructions: AGENTS.md
     skills:
       - https://github.com/vm0-ai/vm0-skills/tree/main/elevenlabs

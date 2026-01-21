@@ -3,7 +3,7 @@ version: "1.0"
 agents:
   tiktok-influencer:
     description: "TikTok influencer discovery and AI-powered analysis agent with Notion integration"
-    provider: claude-code
+    framework: claude-code
     volumes:
       - claude-tiktok-influencer:/home/user/.claude
     working_dir: /home/user/workspace

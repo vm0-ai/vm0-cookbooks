@@ -2,7 +2,7 @@ version: "1.0"
 
 agents:
   intro-volume:
-    provider: claude-code
+    framework: claude-code
     volumes:
       - claude-files:/home/user/.claude
     working_dir: /home/user/workspace

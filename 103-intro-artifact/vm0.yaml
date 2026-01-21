@@ -2,7 +2,7 @@ version: "1.0"
 
 agents:
   intro-artifact:
-    provider: claude-code
+    framework: claude-code
     instructions: AGENTS.md
     environment:
       # Get token using: claude setup-token, then add to .env file
