@@ -22,7 +22,6 @@ Sleep 300ms
 
 Type "vm0 init"
 Enter
-Enter
 Sleep 2s
 
 # Accept default name
@@ -47,10 +46,10 @@ Sleep 300ms
 Type ":wq"
 Enter
 Sleep 1s
+Enter
 
 Type "# Start the agent"
 Sleep 500ms
-Enter
 Enter
 Sleep 300ms
 
@@ -59,6 +58,6 @@ Enter
 Sleep 30s
 Sleep 2s
 
-Type "cat artifact/result.txt"
+Type "cat artifact/result.md"
 Enter
 Sleep 5s
