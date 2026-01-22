@@ -34,7 +34,7 @@ Sleep 300ms
 Enter
 Sleep 3s
 
-Type "vm0 usage --since 2025-01-01 --until 2025-01-15"
+Type "vm0 usage --since 2026-01-01 --until 2026-01-15"
 Sleep 300ms
 Enter
 Sleep 3s
