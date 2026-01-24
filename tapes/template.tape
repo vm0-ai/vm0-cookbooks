@@ -17,10 +17,8 @@ Sleep 500ms
 Type "# VM0 CLI - Build and run agents with natural language"
 Sleep 1s
 Enter
-Sleep 500ms
-
-Type "vm0 --help"
 Sleep 300ms
+Type "vm0 --help"
+Sleep 1s
 Enter
-
 Sleep 3s
