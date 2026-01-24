@@ -42,7 +42,7 @@ Sleep 1s
 
 Type "vm0 run agent-1 --artifact-name my-artifact 'Write 1+1=? to question.md'"
 Enter
-Wait+Screen@120s /Run completed|completed successfully/
+Wait+Screen@120s /Run completed successfully/
 Sleep 8s
 
 Type "# Agent-2: Read question and write answer"
@@ -52,7 +52,7 @@ Sleep 1s
 
 Type "vm0 run agent-2 --artifact-name my-artifact 'Read question.md and answer it in answer.md'"
 Enter
-Wait+Screen@120s /Run completed|completed successfully/
+Wait+Screen@120s /Run completed successfully/
 Sleep 3s
 
 Type "# Pull artifact and show results"
