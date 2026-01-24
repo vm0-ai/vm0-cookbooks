@@ -12,22 +12,28 @@ Set Theme "Dracula"
 Set TypingSpeed 50ms
 
 # Start demo
-Sleep 1s
+Sleep 500ms
 
 Type "# 1. Initialize a new agent"
 Sleep 1s
 Enter
-Sleep 1s
-
+Sleep 300ms
 Type "vm0 init"
+Sleep 1s
 Enter
 Sleep 2s
 
 # Accept default name
 Enter
-Sleep 3s
+Sleep 2s
 
+Enter
+Type "# 2. Edit AGENTS.md with natural language"
+Sleep 1s
+Enter
+Sleep 300ms
 Type "vim AGENTS.md"
+Sleep 1s
 Enter
 Sleep 3s
 
@@ -44,24 +50,26 @@ Escape
 Sleep 300ms
 Type ":wq"
 Enter
-Sleep 2s
+Sleep 1s
 
-Type "# 2. Upload to VM0 cloud"
+Enter
+Type "# 3. Upload to VM0 cloud"
 Sleep 1s
 Enter
-Sleep 1s
-
+Sleep 300ms
 Type "vm0 compose vm0.yaml"
+Sleep 1s
 Enter
 Wait+Screen@60s /Compose created|Compose version exists/
 Sleep 3s
 
-Type "# 3. Run the agent"
+Enter
+Type "# 4. Run the agent"
 Sleep 1s
 Enter
-Sleep 1s
-
+Sleep 300ms
 Type "vm0 run quickstart 'start working'"
+Sleep 1s
 Enter
 Wait+Screen@120s /Run completed successfully/
-Sleep 4s
+Sleep 8s

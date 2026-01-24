@@ -12,18 +12,24 @@ Set Theme "Dracula"
 Set TypingSpeed 50ms
 
 # Start demo
-Sleep 1s
+Sleep 500ms
 
-Type "# Initialize an artifact"
+Type "# 1. Create artifact directory"
 Sleep 1s
 Enter
-Sleep 1s
-
+Sleep 300ms
 Type "mkdir my-artifact && cd my-artifact"
+Sleep 1s
 Enter
 Sleep 2s
 
+Enter
+Type "# 2. Initialize artifact"
+Sleep 1s
+Enter
+Sleep 300ms
 Type "vm0 artifact init"
+Sleep 1s
 Enter
 Sleep 2s
 
@@ -31,34 +37,43 @@ Sleep 2s
 Enter
 Sleep 3s
 
+Enter
+Type "# 3. Push artifact to cloud"
+Sleep 1s
+Enter
+Sleep 300ms
 Type "vm0 artifact push"
+Sleep 1s
 Enter
 Sleep 4s
 
-Type "# Run agent with artifact"
+Enter
+Type "# 4. Run agent with artifact"
 Sleep 1s
 Enter
-Sleep 1s
-
+Sleep 300ms
 Type "vm0 run compose-demo --artifact-name my-artifact 'Write hello world to hello.txt'"
+Sleep 1s
 Enter
 Wait+Screen@120s /Run completed successfully/
-Sleep 3s
+Sleep 8s
 
-Type "# Pull artifact to get result"
+Enter
+Type "# 5. Pull artifact to get result"
 Sleep 1s
 Enter
-Sleep 1s
-
+Sleep 300ms
 Type "vm0 artifact pull"
+Sleep 1s
 Enter
 Sleep 4s
 
-Type "# View the result"
+Enter
+Type "# 6. View the result"
 Sleep 1s
 Enter
-Sleep 1s
-
+Sleep 300ms
 Type "cat hello.txt"
+Sleep 1s
 Enter
 Sleep 4s

@@ -12,18 +12,24 @@ Set Theme "Dracula"
 Set TypingSpeed 50ms
 
 # Start demo
-Sleep 1s
+Sleep 500ms
 
-Type "# Initialize shared artifact"
+Type "# 1. Create shared artifact"
 Sleep 1s
 Enter
-Sleep 1s
-
+Sleep 300ms
 Type "mkdir my-artifact && cd my-artifact"
+Sleep 1s
 Enter
 Sleep 2s
 
+Enter
+Type "# 2. Initialize artifact"
+Sleep 1s
+Enter
+Sleep 300ms
 Type "vm0 artifact init"
+Sleep 1s
 Enter
 Sleep 2s
 
@@ -31,16 +37,23 @@ Sleep 2s
 Enter
 Sleep 3s
 
+Enter
+Type "# 3. Push artifact to cloud"
+Sleep 1s
+Enter
+Sleep 300ms
 Type "vm0 artifact push"
+Sleep 1s
 Enter
 Sleep 4s
 
-Type "# Agent-1: Write a question"
+Enter
+Type "# 4. Agent-1 writes a question"
 Sleep 1s
 Enter
-Sleep 1s
-
+Sleep 300ms
 Type "vm0 run agent-1 --artifact-name my-artifact 'Write 1+1=? to question.md'"
+Sleep 1s
 Enter
 Wait+Screen@120s /Run completed successfully/
 Sleep 8s
@@ -49,29 +62,42 @@ Sleep 8s
 Ctrl+l
 Sleep 1s
 
-Type "# Agent-2: Read question and write answer"
+Type "# 5. Agent-2 reads and answers"
 Sleep 1s
 Enter
-Sleep 1s
-
+Sleep 300ms
 Type "vm0 run agent-2 --artifact-name my-artifact 'Read question.md and answer it in answer.md'"
+Sleep 1s
 Enter
 Wait+Screen@120s /Run completed successfully/
-Sleep 3s
+Sleep 8s
 
-Type "# Pull artifact and show results"
+Enter
+Type "# 6. Pull artifact to get results"
 Sleep 1s
 Enter
-Sleep 1s
-
+Sleep 300ms
 Type "vm0 artifact pull"
+Sleep 1s
 Enter
 Sleep 4s
 
+Enter
+Type "# 7. View the question"
+Sleep 1s
+Enter
+Sleep 300ms
 Type "cat question.md"
+Sleep 1s
 Enter
 Sleep 5s
 
-Type "cat answer.md"
 Enter
-Sleep 6s
+Type "# 8. View the answer"
+Sleep 1s
+Enter
+Sleep 300ms
+Type "cat answer.md"
+Sleep 1s
+Enter
+Sleep 5s
