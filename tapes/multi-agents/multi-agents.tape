@@ -45,6 +45,10 @@ Enter
 Wait+Screen@120s /Run completed successfully/
 Sleep 8s
 
+# Clear screen so agent-2's Wait+Screen doesn't match agent-1's output
+Ctrl+l
+Sleep 1s
+
 Type "# Agent-2: Read question and write answer"
 Sleep 1s
 Enter

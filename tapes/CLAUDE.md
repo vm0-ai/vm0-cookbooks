@@ -38,6 +38,7 @@ Sleep 8s
 - Use the exact pattern `/Run completed successfully/` - do not use partial matches like `/Run completed/` which may trigger early
 - Set a reasonable timeout (e.g., `@120s` for 2 minutes)
 - Add a `Sleep` after the wait to let viewers see the result before the next command
+- **Multiple runs**: If running multiple agents sequentially, clear the screen between runs with `Ctrl+l` so the second `Wait+Screen` doesn't immediately match the first agent's completion message still visible on screen
 
 ## Generate GIF
 
