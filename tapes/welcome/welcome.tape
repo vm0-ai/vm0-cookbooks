@@ -37,7 +37,7 @@ Type "ggdGi"
 Sleep 500ms
 
 # Type the new content
-Type "Get the first article from HackNews and write its title to result.md"
+Type "Get the first article from HackerNews and write its title to result.md"
 Sleep 500ms
 
 # Exit insert mode and save
