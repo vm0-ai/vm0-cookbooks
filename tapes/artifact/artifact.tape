@@ -27,8 +27,7 @@ Type "vm0 artifact init"
 Enter
 Sleep 2s
 
-# Enter artifact name
-Type "my-artifact"
+# Accept default name
 Enter
 Sleep 3s
 
