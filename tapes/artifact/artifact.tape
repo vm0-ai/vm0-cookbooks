@@ -42,7 +42,7 @@ Sleep 1s
 
 Type "vm0 run compose-demo --artifact-name my-artifact 'Write hello world to hello.txt'"
 Enter
-Wait+Screen@120s /Run completed|completed successfully/
+Wait+Screen@120s /Run completed successfully/
 Sleep 3s
 
 Type "# Pull artifact to get result"

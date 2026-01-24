@@ -63,5 +63,5 @@ Sleep 1s
 
 Type "vm0 run quickstart 'start working'"
 Enter
-Wait+Screen@120s /Run completed|completed successfully/
+Wait+Screen@120s /Run completed successfully/
 Sleep 4s

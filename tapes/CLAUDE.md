@@ -35,6 +35,7 @@ Wait+Screen@120s /Run completed successfully/
 Sleep 8s
 ```
 
+- **Use `Wait+Screen` not `Wait+Line`**: `Wait+Line` only checks the last line, but after "Run completed successfully" prints, the cursor moves to a new line with the prompt, so `Wait+Line` will timeout.
 - Use the exact pattern `/Run completed successfully/` - do not use partial matches like `/Run completed/` which may trigger early
 - Set a reasonable timeout (e.g., `@120s` for 2 minutes)
 - Add a `Sleep` after the wait to let viewers see the result before the next command
