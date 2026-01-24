@@ -36,7 +36,7 @@ Type "ggdGi"
 Sleep 500ms
 
 # Type the new content
-Type "Calculate 2+2 and tell me the result"
+Type "Fetch top 10 articles from HackerNews and show me the best one"
 Sleep 500ms
 
 # Exit insert mode and save
@@ -61,7 +61,7 @@ Sleep 1s
 Enter
 Sleep 1s
 
-Type "vm0 run quickstart 'What is 2+2?'"
+Type "vm0 run quickstart 'start working'"
 Enter
 Wait+Screen@120s /Run completed|completed successfully/
 Sleep 4s
