@@ -27,6 +27,25 @@ Sleep 2s
 Enter
 Sleep 3s
 
+Type "vim AGENTS.md"
+Enter
+Sleep 3s
+
+# Delete all content and enter insert mode
+Type "ggdGi"
+Sleep 500ms
+
+# Type the new content
+Type "Calculate 2+2 and tell me the result"
+Sleep 500ms
+
+# Exit insert mode and save
+Escape
+Sleep 300ms
+Type ":wq"
+Enter
+Sleep 2s
+
 Type "# 2. Upload to VM0 cloud"
 Sleep 1s
 Enter
