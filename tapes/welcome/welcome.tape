@@ -56,7 +56,7 @@ Sleep 300ms
 Type "vm0 cook start"
 Enter
 Wait+Screen@120s /Run completed successfully/
-Sleep 2s
+Sleep 8s
 
 Type "cat artifact/result.md"
 Enter
