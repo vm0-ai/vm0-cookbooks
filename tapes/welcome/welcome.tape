@@ -28,6 +28,11 @@ Sleep 2s
 Enter
 Sleep 2s
 
+Type "# Edit AGENTS.md with natural language"
+Sleep 500ms
+Enter
+Sleep 300ms
+
 Type "vim AGENTS.md"
 Enter
 Sleep 5s
@@ -57,6 +62,11 @@ Type "vm0 cook start"
 Enter
 Wait+Screen@120s /Run completed successfully/
 Sleep 8s
+
+Type "# View the result"
+Sleep 500ms
+Enter
+Sleep 300ms
 
 Type "cat artifact/result.md"
 Enter
