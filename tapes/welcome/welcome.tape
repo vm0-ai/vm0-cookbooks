@@ -17,9 +17,7 @@ Sleep 500ms
 Type "# Create a new VM0 agent"
 Sleep 1s
 Enter
-Enter
 Sleep 300ms
-
 Type "vm0 init"
 Sleep 1s
 Enter
@@ -33,9 +31,7 @@ Enter
 Type "# Edit AGENTS.md with natural language"
 Sleep 1s
 Enter
-Enter
 Sleep 300ms
-
 Type "vim AGENTS.md"
 Sleep 1s
 Enter
@@ -61,7 +57,6 @@ Type "# Start the agent"
 Sleep 1s
 Enter
 Sleep 300ms
-
 Type "vm0 cook start"
 Sleep 1s
 Enter
@@ -72,9 +67,7 @@ Enter
 Type "# View the result"
 Sleep 1s
 Enter
-Enter
 Sleep 300ms
-
 Type "cat artifact/result.md"
 Sleep 1s
 Enter

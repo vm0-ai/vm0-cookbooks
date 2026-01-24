@@ -8,6 +8,61 @@ This folder contains VHS tape files for generating VM0 CLI demo GIFs.
 - **Use comments**: Add comment lines (e.g., `Type "# Step description"`) to explain what each step does.
 - **Allow sufficient pauses**: Add adequate `Sleep` durations between commands for readability, especially after long-running commands (8s+ after agent runs).
 
+## Timing Conventions
+
+### Comments (# subtitles)
+
+```tape
+Enter
+Type "# Step description"
+Sleep 1s
+Enter
+Sleep 300ms
+Type "command"
+```
+
+- Add empty line (`Enter`) before starting a new comment section
+- `Sleep 1s` after typing comment to let viewers read it
+- Single `Enter` after comment (no extra blank line)
+- `Sleep 300ms` before typing the command
+- **No empty line between comment and command**
+
+### Commands
+
+```tape
+Type "vm0 init"
+Sleep 1s
+Enter
+Sleep 2s
+```
+
+- `Sleep 1s` before `Enter` to let viewers see the full command
+- `Sleep` after `Enter` to show command output (duration varies by command)
+
+### Example Flow
+
+```tape
+Enter
+Type "# Create a new agent"
+Sleep 1s
+Enter
+Sleep 300ms
+Type "vm0 init"
+Sleep 1s
+Enter
+Sleep 2s
+
+Enter
+Type "# Edit the workflow"
+Sleep 1s
+Enter
+Sleep 300ms
+Type "vim AGENTS.md"
+Sleep 1s
+Enter
+Sleep 5s
+```
+
 ## Creating New Tapes
 
 Reference `template.tape` for base styling:
