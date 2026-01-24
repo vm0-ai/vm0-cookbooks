@@ -23,7 +23,12 @@ Type "mkdir my-artifact && cd my-artifact"
 Enter
 Sleep 2s
 
-Type "vm0 artifact init -n my-artifact"
+Type "vm0 artifact init"
+Enter
+Sleep 2s
+
+# Enter artifact name
+Type "my-artifact"
 Enter
 Sleep 3s
 
