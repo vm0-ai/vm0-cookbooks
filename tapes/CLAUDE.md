@@ -8,6 +8,7 @@ This folder contains VHS tape files for generating VM0 CLI demo GIFs.
 - **Use comments**: Add comment lines (e.g., `Type "# Step description"`) to explain what each step does.
 - **Every command needs a subtitle**: Each command should be preceded by a `# comment` explaining what it does, helping viewers understand each step.
 - **Allow sufficient pauses**: Add adequate `Sleep` durations between commands for readability, especially after long-running commands (8s+ after agent runs).
+- **Reference sample**: See `welcome/welcome.tape` as the best example that follows all conventions.
 
 ## Timing Conventions
 
