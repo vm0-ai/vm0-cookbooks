@@ -41,8 +41,42 @@ Sleep 8s
 - Add a `Sleep` after the wait to let viewers see the result before the next command
 - **Multiple runs**: If running multiple agents sequentially, clear the screen between runs with `Ctrl+l` so the second `Wait+Screen` doesn't immediately match the first agent's completion message still visible on screen
 
-## Generate GIF
+## Setup and Cleanup with record.sh
+
+VHS doesn't support setup/cleanup hooks. For tapes that need environment preparation (e.g., pre-creating files, composing agents), create a `record.sh` script in the tape folder:
 
 ```bash
+#!/bin/bash
+set -e
+
+cd "$(dirname "$0")"
+
+# Setup (not recorded)
+echo "Setting up..."
+rm -f vm0.yaml AGENTS.md
+vm0 init -n demo-agent
+
+# Record
+echo "Recording..."
+~/Developer/vhs/vhs my-tape.tape
+
+# Cleanup
+echo "Cleaning up..."
+rm -f vm0.yaml AGENTS.md
+
+echo "Done!"
+```
+
+Run with `./record.sh` instead of calling `vhs` directly.
+
+## Generate GIF
+
+For simple tapes without setup/cleanup:
+```bash
 vhs <name>.tape
+```
+
+For tapes with setup/cleanup:
+```bash
+./record.sh
 ```

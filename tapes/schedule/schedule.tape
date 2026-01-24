@@ -14,15 +14,6 @@ Set TypingSpeed 50ms
 # Start demo
 Sleep 500ms
 
-Type "# First, initialize an agent"
-Sleep 500ms
-Enter
-Sleep 300ms
-
-Type "vm0 init -n demo-agent"
-Enter
-Sleep 3s
-
 Type "# Schedule your agent with vm0 schedule"
 Sleep 500ms
 Enter
