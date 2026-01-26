@@ -32,7 +32,7 @@ ELEVENLABS_API_KEY=<your-api-key>
 ## Quick Start
 
 ```bash
-vm0 cook "let's start working."
+vm0 cook --env-file .env "let's start working."
 ```
 
 This will automatically handle artifact setup and run the agent with the configured skills.
