@@ -8,7 +8,6 @@ agents:
       - claude-files:/home/user/.claude
     working_dir: /home/user/workspace
     environment:
-      CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
       DUMPLING_AI_API_KEY: ${{ secrets.DUMPLING_AI_API_KEY }}
 
 volumes:

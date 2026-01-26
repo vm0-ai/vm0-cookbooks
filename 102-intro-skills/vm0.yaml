@@ -7,5 +7,4 @@ agents:
     skills:
       - https://github.com/vm0-ai/vm0-skills/tree/main/elevenlabs
     environment:
-      CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
       ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}

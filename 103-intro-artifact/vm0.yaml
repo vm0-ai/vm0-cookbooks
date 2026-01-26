@@ -4,6 +4,3 @@ agents:
   intro-artifact:
     framework: claude-code
     instructions: AGENTS.md
-    environment:
-      # Get token using: claude setup-token, then add to .env file
-      CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}

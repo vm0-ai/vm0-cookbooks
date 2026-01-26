@@ -4,5 +4,3 @@ agents:
   writing:
     framework: claude-code
     instructions: AGENTS.md
-    environment:
-      CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}

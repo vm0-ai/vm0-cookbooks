@@ -18,17 +18,9 @@ npm install -g @vm0/cli
 
 ```bash
 vm0 auth login
+vm0 model-provider setup
 cd 101-intro
 vm0 cook "echo hello world to readme.md"
-```
-
-## Authentication
-
-Create a `.env` file in the `101-intro` directory:
-
-```bash
-# Generate token: claude setup-token
-CLAUDE_CODE_OAUTH_TOKEN=<your-token>
 ```
 
 ## Manual Setup

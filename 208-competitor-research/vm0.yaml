@@ -8,7 +8,6 @@ agents:
       - claude-competitor-research:/home/user/.claude
     working_dir: /home/user/workspace
     environment:
-      CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
       EXA_API_KEY: ${{ secrets.EXA_API_KEY }}
       FIRECRAWL_API_KEY: ${{ secrets.FIRECRAWL_API_KEY }}
       SERPAPI_API_KEY: ${{ secrets.SERPAPI_API_KEY }}

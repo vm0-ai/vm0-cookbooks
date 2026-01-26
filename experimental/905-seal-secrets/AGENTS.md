@@ -15,7 +15,6 @@ This agent has `experimental_seal_secrets: true` enabled, which provides:
 You have access to these sealed environment variables:
 - `DATABASE_PASSWORD` - Example database credential
 - `API_KEY` - Example API authentication key
-- `CLAUDE_CODE_OAUTH_TOKEN` - Claude Code authentication token
 
 ## Your Task
 
