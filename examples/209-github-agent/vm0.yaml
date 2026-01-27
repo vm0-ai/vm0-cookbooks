@@ -8,7 +8,6 @@ agents:
       - github
     volumes:
       - claude-github-cli:/home/user/.claude
-    working_dir: /home/user/workspace
     environment:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 

@@ -6,7 +6,6 @@ agents:
     framework: claude-code
     volumes:
       - claude-files:/home/user/.claude
-    working_dir: /home/user/workspace
     environment:
       FAL_KEY: ${{ secrets.FAL_KEY }}
       DEVTO_API_KEY: ${{ secrets.DEVTO_API_KEY }}

@@ -6,7 +6,6 @@ agents:
     framework: claude-code
     volumes:
       - claude-files:/home/user/.claude
-    working_dir: /home/user/workspace
     environment:
       DUMPLING_AI_API_KEY: ${{ secrets.DUMPLING_AI_API_KEY }}
 

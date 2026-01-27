@@ -6,7 +6,6 @@ agents:
     framework: claude-code
     volumes:
       - claude-competitor-research:/home/user/.claude
-    working_dir: /home/user/workspace
     environment:
       EXA_API_KEY: ${{ secrets.EXA_API_KEY }}
       FIRECRAWL_API_KEY: ${{ secrets.FIRECRAWL_API_KEY }}

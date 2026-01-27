@@ -6,7 +6,6 @@ agents:
     framework: claude-code
     volumes:
       - startup-portrait-volume:/home/user/.claude
-    working_dir: /home/user/workspace
     environment:
       FAL_KEY: ${{ secrets.FAL_KEY }}
       BRIGHTDATA_API_KEY: ${{ secrets.BRIGHTDATA_API_KEY }}

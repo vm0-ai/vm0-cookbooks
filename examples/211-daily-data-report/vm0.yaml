@@ -6,7 +6,6 @@ agents:
     framework: claude-code
     volumes:
       - daily-report-volume:/home/user/.claude
-    working_dir: /home/user/workspace
     environment:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       PLAUSIBLE_API_KEY: ${{ secrets.PLAUSIBLE_API_KEY }}
