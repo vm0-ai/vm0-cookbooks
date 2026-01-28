@@ -4,13 +4,10 @@ agents:
   tiktok-influencer:
     description: "TikTok influencer discovery and AI-powered analysis agent with Notion integration"
     framework: claude-code
-    volumes:
-      - claude-tiktok-influencer:/home/user/.claude
+    instructions: AGENTS.md
+    skills:
+      - https://github.com/vm0-ai/vm0-skills/tree/main/bright-data
+      - https://github.com/vm0-ai/vm0-skills/tree/main/notion
     environment:
       BRIGHTDATA_API_KEY: ${{ secrets.BRIGHTDATA_API_KEY }}
       NOTION_API_KEY: ${{ secrets.NOTION_API_KEY }}
-
-volumes:
-  claude-tiktok-influencer:
-    name: claude-tiktok-influencer
-    version: latest
