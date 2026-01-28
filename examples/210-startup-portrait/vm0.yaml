@@ -4,13 +4,10 @@ agents:
   startup-portrait:
     description: "Scan images and generate professional startup team portraits"
     framework: claude-code
-    volumes:
-      - startup-portrait-volume:/home/user/.claude
+    instructions: AGENTS.md
+    skills:
+      - https://github.com/vm0-ai/vm0-skills/tree/main/bright-data
+      - https://github.com/vm0-ai/vm0-skills/tree/main/fal.ai
     environment:
       FAL_KEY: ${{ secrets.FAL_KEY }}
       BRIGHTDATA_API_KEY: ${{ secrets.BRIGHTDATA_API_KEY }}
-
-volumes:
-  startup-portrait-volume:
-    name: startup-portrait-volume
-    version: latest

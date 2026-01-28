@@ -4,13 +4,10 @@ agents:
   firecrawl-summary:
     description: "Crawl websites, filter relevant articles, summarize with AI, and post to Slack"
     framework: claude-code
-    volumes:
-      - claude-firecrawl-summary:/home/user/.claude
+    instructions: AGENTS.md
+    skills:
+      - https://github.com/vm0-ai/vm0-skills/tree/main/firecrawl
+      - https://github.com/vm0-ai/vm0-skills/tree/main/slack
     environment:
       FIRECRAWL_API_KEY: ${{ secrets.FIRECRAWL_API_KEY }}
       SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-
-volumes:
-  claude-firecrawl-summary:
-    name: claude-firecrawl-summary
-    version: latest
