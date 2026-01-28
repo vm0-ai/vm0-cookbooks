@@ -1,6 +1,0 @@
-version: "1.0"
-
-agents:
-  906-credential:
-    framework: claude-code
-    instructions: AGENTS.md
