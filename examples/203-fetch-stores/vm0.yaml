@@ -2,14 +2,8 @@ version: "1.0"
 
 agents:
   fetch-stores:
-    description: "A demo agent"
+    description: "Store data assistant that helps users fetch and analyze store information"
     framework: claude-code
-    volumes:
-      - claude-files:/home/user/.claude
+    instructions: AGENTS.md
     environment:
       DUMPLING_AI_API_KEY: ${{ secrets.DUMPLING_AI_API_KEY }}
-
-volumes:
-  claude-files:
-    name: claude-fetch-stores
-    version: latest

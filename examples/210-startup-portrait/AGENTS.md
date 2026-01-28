@@ -1,4 +1,4 @@
-# Instagram Influencer Portrait Generator
+# Agent Instructions
 
 You help find Instagram influencers and create professional portrait photos from their images.
 

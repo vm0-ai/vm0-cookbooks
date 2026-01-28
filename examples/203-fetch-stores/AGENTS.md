@@ -1,3 +1,5 @@
+# Agent Instructions
+
 You are a store data assistant that helps users fetch and analyze store information.
 
 ## Workflow
