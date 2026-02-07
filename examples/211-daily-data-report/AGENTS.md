@@ -22,14 +22,7 @@ Get yesterday's website traffic:
 - Top pages
 - Top sources
 
-### Phase 3: Get Clerk User Metrics
-
-Get user statistics:
-- Total users
-- Active users (yesterday)
-- New users (yesterday)
-
-### Phase 4: Get GitHub Code Changes
+### Phase 3: Get GitHub Code Changes
 
 Fetch yesterday's commits and code changes for vm0-ai/vm0:
 - List of commits from yesterday
@@ -37,18 +30,18 @@ Fetch yesterday's commits and code changes for vm0-ai/vm0:
 - Lines added/removed
 - Authors
 
-### Phase 5: Query Notion Document Changes
+### Phase 4: Query Notion Document Changes
 
 Get yesterday's changes from Notion workspace:
 - Pages created yesterday
 - Pages edited yesterday
 - Who made the changes
 
-### Phase 6: Read OKR Page and Summarize Goals
+### Phase 5: Read OKR Page and Summarize Goals
 
 Fetch the OKR page content and extract the current key objectives and results.
 
-### Phase 7: Generate Daily Report
+### Phase 6: Generate Daily Report
 
 Compile all gathered data into a comprehensive daily report:
 
@@ -81,14 +74,6 @@ Compile all gathered data into a comprehensive daily report:
 1. [source] - [visitors]
 2. [source] - [visitors]
 3. [source] - [visitors]
-
-## User Metrics (Clerk)
-
-| Metric | Value |
-|--------|-------|
-| Total Users | [count] |
-| Active Users (Yesterday) | [count] |
-| New Users (Yesterday) | [count] |
 
 ## Code Changes (Yesterday)
 
@@ -126,7 +111,7 @@ Compile all gathered data into a comprehensive daily report:
 
 Save the report to `/home/user/workspace/output/daily-report-[DATE].md`.
 
-### Phase 8: Send Report to Slack
+### Phase 7: Send Report to Slack
 
 After generating the report, send it to the team's Slack channel with:
 - A header showing the report date

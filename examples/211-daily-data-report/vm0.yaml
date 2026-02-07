@@ -11,10 +11,5 @@ agents:
       - https://github.com/vm0-ai/vm0-skills/tree/main/notion
       - https://github.com/vm0-ai/vm0-skills/tree/main/slack
     environment:
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      PLAUSIBLE_API_KEY: ${{ secrets.PLAUSIBLE_API_KEY }}
-      PLAUSIBLE_SITE_ID: ${{ secrets.PLAUSIBLE_SITE_ID }}
-      NOTION_API_KEY: ${{ secrets.NOTION_API_KEY }}
-      SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
-      SLACK_CHANNEL_ID: ${{ secrets.SLACK_CHANNEL_ID }}
-      CLERK_SECRET_KEY: ${{ secrets.CLERK_SECRET_KEY }}
+      PLAUSIBLE_SITE_ID: ${{ vars.PLAUSIBLE_SITE_ID }}
+      SLACK_CHANNEL_ID: ${{ vars.SLACK_CHANNEL_ID }}

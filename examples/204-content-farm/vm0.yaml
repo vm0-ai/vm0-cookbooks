@@ -9,6 +9,3 @@ agents:
       - https://github.com/vm0-ai/vm0-skills/tree/main/rss-fetch
       - https://github.com/vm0-ai/vm0-skills/tree/main/fal.ai
       - https://github.com/vm0-ai/vm0-skills/tree/main/dev.to
-    environment:
-      FAL_KEY: ${{ secrets.FAL_KEY }}
-      DEVTO_API_KEY: ${{ secrets.DEVTO_API_KEY }}

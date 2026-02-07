@@ -2,5 +2,6 @@ version: "1.0"
 
 agents:
   writing:
+    description: "Professional writing collaboration assistant for content improvement"
     framework: claude-code
     instructions: AGENTS.md

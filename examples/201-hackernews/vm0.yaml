@@ -2,6 +2,7 @@ version: "1.0"
 
 agents:
   201-hackernews:
+    description: "Daily HackerNews curator that fetches and analyzes top stories"
     framework: claude-code
     instructions: AGENTS.md
     skills:
