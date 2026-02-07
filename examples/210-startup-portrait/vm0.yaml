@@ -8,6 +8,3 @@ agents:
     skills:
       - https://github.com/vm0-ai/vm0-skills/tree/main/bright-data
       - https://github.com/vm0-ai/vm0-skills/tree/main/fal.ai
-    environment:
-      FAL_KEY: ${{ secrets.FAL_KEY }}
-      BRIGHTDATA_API_KEY: ${{ secrets.BRIGHTDATA_API_KEY }}

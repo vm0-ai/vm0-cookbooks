@@ -8,6 +8,3 @@ agents:
     skills:
       - https://github.com/vm0-ai/vm0-skills/tree/main/bright-data
       - https://github.com/vm0-ai/vm0-skills/tree/main/notion
-    environment:
-      BRIGHTDATA_API_KEY: ${{ secrets.BRIGHTDATA_API_KEY }}
-      NOTION_API_KEY: ${{ secrets.NOTION_API_KEY }}
